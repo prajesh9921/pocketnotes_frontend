@@ -1,0 +1,27 @@
+.container {
+  padding: 10px;
+  border-radius: 5px;
+  background: #fff;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.noteText {
+  font-size: 1rem;
+  font-weight: 400;
+  white-space: pre-wrap; 
+}
+
+.dateTime {
+  color: #353535;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-end;
+  margin-top: 10px;
+}

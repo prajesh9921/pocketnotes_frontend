@@ -1,0 +1,103 @@
+.rightMain {
+  background-color: #dae5f5;
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+}
+
+.header {
+  background-color: #001f8b;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  gap: 1.2rem;
+}
+
+.initialDiv {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initialsText {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.inputMain {
+  background-color: #001f8b;
+  padding: 15px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.textarea {
+  height: 25%;
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.notesDiv {
+  padding: 20px;
+  background-color: #dae5f5;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.notesDiv::-webkit-scrollbar {
+  width: 12px;
+  background: rgba(0, 0, 0, 0.63);
+  border-radius: 10px;
+}
+
+.notesDiv::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.63);
+}
+
+.notesDiv::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.63);
+}
+
+.backBtn {
+  display: none;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 481px) {
+  .rightMain {
+    display: flex !important;
+  }
+}
+
+/* CSS for Small Devices */
+@media only screen and (max-width: 480px) {
+  .rightMain {
+    display: none;
+  }
+
+  .backBtn {
+    display: flex;
+  }
+}

@@ -1,0 +1,70 @@
+.leftMain {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+}
+
+.titleHolder {
+  padding: 20px 0;
+  position: static;
+}
+
+.pocketNote {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.renderListDiv {
+  overflow-y: auto;
+}
+
+.fab {
+  background-color: #16008b;
+  border-radius: 35px;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 30px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
+}
+
+.fabText {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.renderListDiv::-webkit-scrollbar {
+  width: 12px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+}
+
+.renderListDiv::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+}
+
+.texrenderListDivtarea::-webkit-scrollbar-thumb:hover {
+  border: 1px solid #d9d9d9;
+}
+
+@media only screen and (min-width: 481px) {
+  .leftMain {
+    display: flex !important;
+  }
+}

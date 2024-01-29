@@ -1,0 +1,104 @@
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(47, 47, 47, 0.75);
+}
+.modalcontent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #ffffff;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.closemodal {
+  padding: 10px 10%;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #001f8b;
+  align-self: flex-end;
+}
+
+.groupNameDiv,
+.chooseColorDiv {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.input {
+  height: 40px;
+  border-radius: 20px;
+  padding-left: 10px;
+  border: 2px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+}
+
+.colorCardDiv {
+  padding: 5px;
+  border: #000 1px solid;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colorCardDiv1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colorCards {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* CSS for Small Devices */
+@media only screen and (max-width: 480px) {
+  .label {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .colorCardDiv, .colorCardDiv1 {
+    transform: scale(0.5);
+  }
+
+  .colorCards {
+    gap: 0;
+  }
+
+  .modalcontent {
+    padding: 15px;
+  }
+}

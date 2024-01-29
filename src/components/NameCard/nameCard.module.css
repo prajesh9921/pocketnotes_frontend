@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 0 10%;
+}
+
+.initialDiv {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initialsText {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
