@@ -37,7 +37,7 @@ export default function NotesData({
 
   // Function to share the link
   const handleSendLink = async () => {
-    const url = `http://localhost:3000/notes/${notesData?._id}`;
+    const url = `https://pocketnotespng.netlify.app/notes/${notesData?._id}`;
     try {
       await navigator.clipboard.writeText(url);
       alert("Link copied to clipboard!");
