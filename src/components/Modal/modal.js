@@ -8,10 +8,12 @@ import {
   Color5,
   Color6,
 } from "../../assets/SVG/svgs";
+import { AddGroup } from "../../apis/api";
 
-export default function Modal({ modal, setModal }) {
+export default function Modal({ modal, setModal, setListData }) {
   const [selectedColor, setSelectedColor] = useState("");
   const [groupName, setGroupName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -54,12 +56,6 @@ export default function Modal({ modal, setModal }) {
     },
   ];
 
-  const generateRandom4DigitID = () => {
-    // Generate a random number between 1000 and 9999 (inclusive)
-    const randomID = Math.floor(Math.random() * 9000) + 1000;
-    return randomID;
-  };
-
   const getInitialLetters = () => {
     if (groupName) {
       // Converting sentence to list separated by spaces
@@ -80,26 +76,11 @@ export default function Modal({ modal, setModal }) {
     }
   };
 
-  const handleCreateButton = () => {
-    // Generateing Random ID
-    const randomID = generateRandom4DigitID();
+  const handleCreateButton = async () => {
     const initialLetters = getInitialLetters();
-    const res = localStorage.getItem("PocketNotes");
-    const data = JSON.parse(res);
-    const groupId = initialLetters + randomID;
-
-    const val = {
-      id: groupId,
-      initialLetters: initialLetters,
-      title: groupName,
-      color: selectedColor,
-      notes: [],
-    };
-    
     if (selectedColor && groupName) {
-      // Adding new value to existing array
-      const tempArray = [...data.data, val];
-      localStorage.setItem('PocketNotes', JSON.stringify({data: tempArray}))
+      const response = await AddGroup(setLoading, groupName, initialLetters, selectedColor);
+      setListData((prev) => [...prev, response?.result]);
       setSelectedColor("");
       setGroupName("");
       toggleModal();

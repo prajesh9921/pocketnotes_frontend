@@ -4,52 +4,50 @@ import SendArrow from "../../assets/SVG/sendArrow";
 import NoteCard from "../NoteCard/noteCard";
 import SpalshScreen from "../SplashScreen/SplashScreen";
 import BackArrow from "../../assets/SVG/backArrow";
+import { AddNoteToGroup } from "../../apis/api";
+import { FaShareAlt } from "react-icons/fa";
 
 export default function NotesData({
   notesData,
   shouldBeVisible,
   setShouldBeVisible,
 }) {
-  const [notesList, setNotesList] = useState(notesData.notes);
+  const [notesList, setNotesList] = useState(notesData?.notes || []);
   const [userInput, setUserInput] = useState();
+  const [loading, setLoading] = useState(false);
   const screenWidth = window.innerWidth;
 
   const handleInput = (event) => {
     setUserInput(event.target.value);
   };
 
-  const getCurrentDateandTime = () => {
-    const currentDate = new Date();
-    const isoFormattedDate = currentDate.toISOString();
-    return isoFormattedDate;
-  };
-
-  // this function adds new note to the notes list;
-  const handleSendArrrowButton = () => {
-    const res = localStorage.getItem("PocketNotes");
-    const allData = JSON.parse(res);
-
-    const timeStamp = getCurrentDateandTime();
-    const val = { value: userInput, timeStamp: timeStamp };
-    setNotesList((prev) => [...prev, val]);
-
-    allData.data.forEach((item, index) => {
-      if (item.id === notesData.id) {
-        item.notes = [...notesList, val];
-      }
-    });
-
-    localStorage.setItem("PocketNotes", JSON.stringify(allData));
-
+  const handleSendArrrowButton = async () => {
+    const response = await AddNoteToGroup(
+      setLoading,
+      notesData?._id,
+      userInput
+    );
+    setNotesList(response?.newData?.notes);
     setUserInput("");
   };
 
   const goBack = () => {
     setShouldBeVisible("left");
-  }
+  };
+
+  // Function to share the link
+  const handleSendLink = async () => {
+    const url = `http://localhost:3000/notes/${notesData?._id}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      alert("Link copied to clipboard!");
+    } catch (error) {
+      console.error("Failed to copy text: ", error);
+    }
+  };
 
   useEffect(() => {
-    setNotesList(notesData.notes);
+    setNotesList(notesData?.notes);
   }, [notesData]);
 
   const displayStyle =
@@ -59,7 +57,7 @@ export default function NotesData({
 
   return (
     <div className={styles.rightMain} style={displayStyle}>
-      {notesData.length === 0 || notesData === undefined ? (
+      {notesData?.length === 0 || notesData === undefined ? (
         <SpalshScreen />
       ) : (
         <>
@@ -69,12 +67,22 @@ export default function NotesData({
               <BackArrow />
             </div>
             <div
-              style={{ backgroundColor: notesData?.color }}
+              style={{ backgroundColor: notesData?.selectedColor }}
               className={styles.initialDiv}
             >
               <p className={styles.initialsText}>{notesData.initialLetters}</p>
             </div>
-            <p className={styles.title}>{notesData.title}</p>
+            <p className={styles.title}>{notesData?.grpName}</p>
+            <FaShareAlt
+              color="#ffffff"
+              onClick={handleSendLink}
+              size={24}
+              style={{
+                cursor: "pointer",
+                marginLeft: "auto",
+                marginRight: "2rem",
+              }}
+            />
           </div>
 
           <div className={styles.notesDiv}>

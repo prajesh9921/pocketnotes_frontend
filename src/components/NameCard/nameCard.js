@@ -18,11 +18,10 @@ export default function NameCard({ id, activeNote, setActiveNote, data, setNotes
 
   return (
     <div style={bgStyles} className={styles.container} onClick={handleClick}>
-      <div style={{ backgroundColor: data.color }} className={styles.initialDiv}>
-        <p className={styles.initialsText}>{data.initialLetters}</p>
+      <div style={{ backgroundColor: data?.selectedColor }} className={styles.initialDiv}>
+        <p className={styles.initialsText}>{data?.initialLetters}</p>
       </div>
-      
-      <p className={styles.title}>{data.title}</p>
+      <p className={styles.title}>{data?.grpName}</p>
     </div>
   );
 }

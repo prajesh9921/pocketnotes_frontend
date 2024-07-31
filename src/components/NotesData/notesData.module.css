@@ -85,6 +85,12 @@
   cursor: pointer;
 }
 
+.loader {
+  position: absolute;
+  bottom: 0;
+  right: 0,
+}
+
 @media only screen and (min-width: 481px) {
   .rightMain {
     display: flex !important;
